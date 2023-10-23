@@ -395,6 +395,17 @@ print(f"Accuracy: {accuracy}")
 print("Classification Report:")
 print(classification_report(y_test, y_pred))
 
+import pickle
+file = open('model.pkl', 'wb')
+pickle.dump(final_model,file)
+
+model = open('model.pkl', 'rb')
+tree = pickle.load(model)
+
+y_prediction = tree.predict(X_test)
+
+metrics.r2_score(y_test, y_prediction)
+
 """**CONCLUSION**
 
 Why to choose an algorithm
